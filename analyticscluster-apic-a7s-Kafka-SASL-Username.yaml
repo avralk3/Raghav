@@ -1,0 +1,297 @@
+﻿apiVersion: analytics.apiconnect.ibm.com/v1beta1
+kind: AnalyticsCluster
+metadata:
+  annotations:
+    apiconnect-operator/hash: 590fd0412ad7ad5fd26dad28a14f2541a1260978495a45390114b3351ec57505
+  selfLink: >-
+    /apis/analytics.apiconnect.ibm.com/v1beta1/namespaces/cp4i-apic/analyticsclusters/apic-a7s
+  resourceVersion: '12144210'
+  name: apic-a7s
+  uid: 0e23f81d-2cd3-46ed-83db-682192ad84ce
+  creationTimestamp: '2020-11-07T03:59:26Z'
+  generation: 1
+  managedFields:
+    - apiVersion: analytics.apiconnect.ibm.com/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:apiconnect-operator/hash': {}
+          'f:ownerReferences': {}
+        'f:spec':
+          'f:version': {}
+          'f:imageRegistry': {}
+          'f:microServiceSecurity': {}
+          'f:storage':
+            .: {}
+            'f:clientAuthEnabled': {}
+            'f:coord':
+              .: {}
+              'f:volumeClaimTemplate':
+                .: {}
+                'f:storageClassName': {}
+            'f:data':
+              .: {}
+              'f:volumeClaimTemplate':
+                .: {}
+                'f:storageClassName': {}
+                'f:volumeSize': {}
+            'f:enabled': {}
+            'f:master':
+              .: {}
+              'f:volumeClaimTemplate':
+                .: {}
+                'f:storageClassName': {}
+                'f:volumeSize': {}
+            'f:shared':
+              .: {}
+              'f:volumeClaimTemplate':
+                .: {}
+                'f:volumeSize': {}
+            'f:type': {}
+          'f:license':
+            .: {}
+            'f:accept': {}
+            'f:metric': {}
+            'f:use': {}
+          .: {}
+          'f:template': {}
+          'f:certManagerIssuer':
+            .: {}
+            'f:kind': {}
+            'f:name': {}
+          'f:ingestion':
+            'f:pipelineBatchSize': {}
+            'f:endpoint':
+              .: {}
+              'f:annotations':
+                .: {}
+                'f:certmanager.k8s.io/issuer': {}
+              'f:hosts': {}
+            'f:enabled': {}
+            .: {}
+            'f:clientSubjectDN': {}
+            'f:clientAuthEnabled': {}
+            'f:configReloadAutomatic': {}
+            'f:pipelineWorkers': {}
+            'f:pipelineBatchDelay': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/part-of': {}
+          'f:profile': {}
+          'f:imagePullSecrets': {}
+          'f:cronjobs':
+            .: {}
+            'f:enabled': {}
+            'f:retentionSchedule': {}
+            'f:rolloverSchedule': {}
+          'f:mq':
+            .: {}
+            'f:kafka':
+              .: {}
+              'f:volumeClaimTemplate':
+                .: {}
+                'f:volumeSize': {}
+            'f:zk':
+              .: {}
+              'f:volumeClaimTemplate':
+                .: {}
+                'f:volumeSize': {}
+          'f:external':
+            .: {}
+            'f:load':
+              .: {}
+              'f:enabled': {}
+            'f:mq': {}
+            'f:offload':
+              .: {}
+              'f:output': {}
+            'f:storage':
+              .: {}
+              'f:verificationMode': {}
+          'f:client':
+            .: {}
+            'f:basePath': {}
+            'f:clientAuthEnabled': {}
+            'f:clientSubjectDN': {}
+            'f:enabled': {}
+            'f:endpoint':
+              .: {}
+              'f:annotations':
+                .: {}
+                'f:certmanager.k8s.io/issuer': {}
+              'f:hosts': {}
+            'f:rateLimitLimit': {}
+            'f:style': {}
+        'f:status':
+          'f:microServiceSecurity': {}
+          'f:phase': {}
+          'f:endpoints': {}
+          'f:conditions': {}
+          .: {}
+          'f:versions':
+            .: {}
+            'f:available':
+              .: {}
+              'f:channels': {}
+              'f:versions': {}
+            'f:reconciled': {}
+          'f:serviceCASecret': {}
+          'f:services':
+            'f:cj-rollover': {}
+            'f:storage-master': {}
+            'f:cj-retention': {}
+            .: {}
+            'f:storage-coord': {}
+            'f:ingestion': {}
+            'f:storage-data': {}
+            'f:mtls-gw': {}
+            'f:client': {}
+          'f:serviceServerSecret': {}
+          'f:serviceClientSecret': {}
+          'f:state': {}
+      manager: ibm-apiconnect
+      operation: Update
+      time: '2020-11-11T22:26:06Z'
+  namespace: cp4i-apic
+  ownerReferences:
+    - apiVersion: apiconnect.ibm.com/v1beta1
+      blockOwnerDeletion: true
+      controller: true
+      kind: APIConnectCluster
+      name: apic
+      uid: 545f1f9c-4520-4d5e-a3ad-b9deeb352f98
+spec:
+  license:
+    accept: true
+    metric: VirtualProcessorCore
+    use: nonproduction
+  certManagerIssuer:
+    kind: Issuer
+    name: apic-self-signed
+  imagePullSecrets:
+    - ibm-entitlement-key
+  mq:
+    kafka:
+      volumeClaimTemplate:
+        volumeSize: 5Gi
+    zk:
+      volumeClaimTemplate:
+        volumeSize: 5Gi
+  ingestion:
+    clientAuthEnabled: true
+    clientSubjectDN: 'CN=apic-a7s-ing-client,O=cert-manager'
+    configReloadAutomatic: true
+    enabled: true
+    endpoint:
+      annotations:
+        certmanager.k8s.io/issuer: apic-ingress-issuer
+    pipelineBatchDelay: 50
+    pipelineBatchSize: 250
+    pipelineWorkers: 24
+  cronjobs:
+    enabled: true
+    retentionSchedule: 30 1 * * *
+    rolloverSchedule: '15,45 * * * *'
+  profile: n1xc2.m16
+  external:
+    load:
+      enabled: false
+    mq: {}
+    offload:
+      enabled:true
+      output: |
+        kafka {
+          topic_id => "GetfromRaj"
+          bootstrap_servers => "example.com:9093"
+          codec => "json"
+          id => "kafka_offload"
+          security_protocol => SASL_PLAINTEXT
+          username => "Username"
+          serviceName => "getfromRAJ"
+          renewTicket => True          
+         }                  
+    storage:
+      verificationMode: certificate
+  client:
+    basePath: /analytics
+    clientAuthEnabled: true
+    clientSubjectDN: 'CN=apic-a7s-cl-client,O=cert-manager'
+    enabled: true
+    endpoint:
+      annotations:
+        certmanager.k8s.io/issuer: apic-ingress-issuer
+    rateLimitLimit: 1000
+    style: carbon
+  microServiceSecurity: certManager
+  version: 10.0.1.0
+  imageRegistry: cp.icr.io/cp/apic
+  template: []
+  storage:
+    clientAuthEnabled: true
+    coord:
+      volumeClaimTemplate:
+        storageClassName: managed-premium
+    data:
+      volumeClaimTemplate:
+        storageClassName: managed-premium
+        volumeSize: 50Gi
+    enabled: true
+    master:
+      volumeClaimTemplate:
+        storageClassName: managed-premium
+        volumeSize: 5Gi
+    shared:
+      volumeClaimTemplate:
+        volumeSize: 50Gi
+    type: unique
+  labels:
+    app.kubernetes.io/part-of: apic
+status:
+  serviceCASecret: apic-a7s-ca
+  serviceServerSecret: apic-a7s-server
+  serviceClientSecret: apic-a7s-client
+  state: 8/8
+  microServiceSecurity: certManager
+  conditions:
+    - lastTransitionTime: '2020-11-07T03:59:37Z'
+      status: 'False'
+      type: Error
+    - lastTransitionTime: '2020-11-07T04:02:01Z'
+      status: 'False'
+      type: Pending
+    - lastTransitionTime: '2020-11-07T04:02:01Z'
+      message: 8/8
+      status: 'True'
+      type: Ready
+    - lastTransitionTime: '2020-11-07T03:59:26Z'
+      status: 'False'
+      type: Warning
+  phase: Running
+  versions:
+    available:
+      channels:
+        - name: '10'
+        - name: '10.0'
+        - name: 10.0.1
+        - name: 10.0.1.0
+      versions:
+        - name: 10.0.1.0-627
+    reconciled: 10.0.1.0-627
+  services:
+    cj-retention: apic-a7s-cj-retention
+    cj-rollover: apic-a7s-cj-rollover
+    client: apic-a7s-client
+    ingestion: apic-a7s-ingestion
+    mtls-gw: apic-a7s-mtls-gw
+    storage-coord: apic-a7s-storage-coord
+    storage-data: apic-a7s-storage-data
+    storage-master: apic-a7s-storage-master
+  endpoints:
+    - name: acEndpoint
+      type: UI
+      uri: 'https://apic-a7s-ac-endpoint-cp4i-apic.apps.ocp.cp4i.zint.cloud/'
+    - name: aiEndpoint
+      type: API
+      uri: 'https://apic-a7s-ai-endpoint-cp4i-apic.apps.ocp.cp4i.zint.cloud/'
