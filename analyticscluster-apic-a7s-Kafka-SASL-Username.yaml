@@ -203,7 +203,7 @@ spec:
       enabled:true
       output: |
         kafka {
-          topic_id => "GetfromRaj"
+          topic_id => "dtp-apimanager"
           bootstrap_servers => "example.com:9093"
           codec => "json"
           id => "kafka_offload"
